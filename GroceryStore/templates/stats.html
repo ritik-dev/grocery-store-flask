@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <div class="container">
+    <h1>Statistics</h1>
+    
+    <div class="row">
+      <div class="col-md-6">
+        {% if loading %}
+          <p>Loading...</p>
+        {% else %}
+          <h2>Revenue Chart 📊</h2>
+          <img src="{{ url_for('static', filename='1.png') }}" alt="Chart Image" style="max-width: 200%; height: auto;">
+          <div class="revenue-info">
+            <p>{{ combined_sentence | safe }}</p>
+        </div>
+        {% endif %}
+      </div>
+      <form method="post" action="{{ url_for('reset_stats') }}">
+        <button type="submit" class="btn btn-primary">Reset♻️</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
